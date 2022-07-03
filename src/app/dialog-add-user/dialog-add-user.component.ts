@@ -11,8 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 export class DialogAddUserComponent implements OnInit {
   user = new User();
-  //! initialize later
-  birthDate!: Date; 
+  birthDate!: Date;  //! initialize later
   loading: boolean = false;
 
   constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<DialogAddUserComponent>) { }
