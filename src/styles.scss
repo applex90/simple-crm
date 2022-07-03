@@ -14,3 +14,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width {
     width: 100%;
 }
+
+.dialog-container {
+    position: relative;
+
+    .progress-bar {
+        position: absolute;
+        left: -24px;
+        right: -24px;
+        top: -24px;
+        width: calc(100% + 48px);
+    }
+}
