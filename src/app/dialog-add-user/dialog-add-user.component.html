@@ -5,13 +5,13 @@
         <div>
             <mat-form-field class="mr-16" appearance="outline">
                 <mat-label>First name</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="Enter first name">
+                <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="Enter first name" required #firstName="ngModel">
                 <!-- <mat-hint>Please enter a name</mat-hint> -->
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Last name</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="Enter last name">
+                <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="Enter last name" required #lastName="ngModel">
                 <!-- <mat-hint>Please enter a name</mat-hint> -->
             </mat-form-field>
         </div>
@@ -19,7 +19,7 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Email</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="Enter email">
+                <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="Enter email" required type="email" name="email" email #eMail="ngModel">
                 <!-- <mat-hint>Please enter email</mat-hint> -->
             </mat-form-field>
         </div>
@@ -27,7 +27,7 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Birth Date</mat-label>
-                <input [disabled]="loading" [(ngModel)]="birthDate" matInput placeholder="Enter date" [matDatepicker]="picker1">
+                <input [disabled]="loading" [(ngModel)]="birthDate" matInput placeholder="Enter date" [matDatepicker]="picker1" required #bDate="ngModel">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
                 <!-- <mat-hint>Please enter a name</mat-hint> -->
@@ -57,6 +57,6 @@
     </div>
     <div mat-dialog-actions>
         <button [disabled]="loading" mat-button (click)="this.dialogRef.close()">Cancel</button>
-        <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
+        <button [disabled]="firstName.invalid || lastName.invalid || eMail.invalid || bDate.invalid || loading" mat-button (click)="saveUser()" cdkFocusInitial>Save </button>
     </div>
 </div>
