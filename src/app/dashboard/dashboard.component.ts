@@ -12,4 +12,29 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
+  async init() {
+    let url = 'https://api.vatcomply.com/vat?vat_number=NL810462783B01';
+    try {
+      let response = await fetch(url);
+      if (1==1) {
+        console.log(response);
+        let vatInfo = await response.json();
+        console.log(vatInfo.valid, vatInfo);
+        if(vatInfo.valid) {
+          console.log('gültig');
+          
+        } else {
+          console.log('nicht gültig');
+        }
+       
+      }
+
+    } catch (e) {
+      console.log('Fehler aufgetreten');
+    }
+  }
 }
+
+

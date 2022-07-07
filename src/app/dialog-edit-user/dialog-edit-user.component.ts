@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -17,9 +18,11 @@ export class DialogEditUserComponent implements OnInit {
   loading: boolean = false;
 
   ngOnInit(): void {
+    this.birthDate = new Date (this.user.birthDate);
   }
 
   saveUser() {
+    this.user.birthDate = this.birthDate.getTime();
     this.loading = true;
     this.firestore
       .collection('users')
