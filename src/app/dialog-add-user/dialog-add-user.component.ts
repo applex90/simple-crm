@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
+import { VatcheckService } from '../vatcheck.service';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -13,9 +14,8 @@ export class DialogAddUserComponent implements OnInit {
   user = new User();
   birthDate!: Date;  //! initialize later
   loading: boolean = false;
-  vatNr : string;
 
-  constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<DialogAddUserComponent>) { }
+  constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<DialogAddUserComponent>, public vatcheck: VatcheckService) { }
  
   
 

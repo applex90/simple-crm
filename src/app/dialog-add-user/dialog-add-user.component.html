@@ -3,10 +3,16 @@
     <h1 mat-dialog-title>Add user</h1>
     <div mat-dialog-content>
         <div>
-            <mat-form-field class="mr-16" appearance="outline">
+            <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Company name</mat-label>
                 <input [disabled]="loading" [(ngModel)]="user.companyName" matInput placeholder="Enter company name">
             </mat-form-field>
+            <mat-form-field class="mr-16" appearance="outline">
+                <mat-label>VAT Number</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.vat" matInput placeholder="Enter VAT Number">
+            </mat-form-field>
+            <mat-divider></mat-divider><br>
+
 
             <mat-form-field class="mr-16" appearance="outline">
                 <mat-label>First name</mat-label>

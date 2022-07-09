@@ -3,10 +3,16 @@
     <h1 mat-dialog-title>Edit user</h1>
     <div mat-dialog-content>
         <div>
-            <mat-form-field class="mr-16" appearance="outline">
+            <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Company name</mat-label>
                 <input [disabled]="loading" [(ngModel)]="user.companyName" matInput placeholder="Enter company name">
             </mat-form-field>
+            <mat-form-field class="mr-16" appearance="outline">
+                <mat-label>VAT Number</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.vat" matInput placeholder="Enter VAT Number">
+                <mat-hint [ngClass]="{'valid-color': user.vatState === 'valid', 'invalid-color' : user.vatState === 'invalid'}">{{ user.vatState }}</mat-hint>
+            </mat-form-field><button mat-flat-button color="primary" (click)="vatcheck.vat(user.vat, userId)">verify VAT</button>
+            <mat-divider></mat-divider><br>
 
             <mat-form-field class="mr-16" appearance="outline">
                 <mat-label>First name</mat-label>

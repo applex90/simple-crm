@@ -1,4 +1,6 @@
 export class User {
+    vat: string;
+    vatState: string;
     companyName: string;
     firstName: string;
     lastName: string;
@@ -9,6 +11,8 @@ export class User {
     city: string;
 
     constructor(obj?: any) {
+        this.vat = obj ? obj.vat : '';
+        this.vatState = obj ? obj.vatState : '';
         this.companyName = obj ? obj.companyName : '';
         this.firstName = obj ? obj.firstName : '';
         this.lastName = obj ? obj.lastName : '';
@@ -21,6 +25,8 @@ export class User {
 
     public toJSON() {
         return {
+            vat: this.vat,
+            vatState: this.vatState,
             companyName: this.companyName,
             firstName: this.firstName,
             lastName: this.lastName,

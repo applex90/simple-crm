@@ -1,8 +1,10 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { user } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
+import { VatcheckService } from '../vatcheck.service';
 
 @Component({
   selector: 'app-dialog-edit-user',
@@ -11,7 +13,7 @@ import { User } from 'src/models/user.class';
 })
 export class DialogEditUserComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>, private firestore: AngularFirestore) { }
+  constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>, private firestore: AngularFirestore, public vatcheck: VatcheckService) { }
   user: User;
   userId: string;
   birthDate!: Date;  //! initialize later
