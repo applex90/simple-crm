@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { user } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { VatcheckService } from '../vatcheck.service';
   templateUrl: './dialog-edit-user.component.html',
   styleUrls: ['./dialog-edit-user.component.scss']
 })
-export class DialogEditUserComponent implements OnInit {
+export class DialogEditUserComponent implements OnInit, DoCheck {
 
   constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>, private firestore: AngularFirestore, public vatcheck: VatcheckService) { }
   user: User;
@@ -23,8 +23,13 @@ export class DialogEditUserComponent implements OnInit {
     this.birthDate = new Date (this.user.birthDate);
   }
 
+  ngDoCheck() {
+    this.user.vatState = this.vatcheck.vatState;
+  }
+
   saveUser() {
     this.user.birthDate = this.birthDate.getTime();
+    this.user.vatState = this.vatcheck.vatState;
     this.loading = true;
     this.firestore
       .collection('users')
@@ -35,5 +40,6 @@ export class DialogEditUserComponent implements OnInit {
         this.dialogRef.close();
       })
   }
+
 
 }
