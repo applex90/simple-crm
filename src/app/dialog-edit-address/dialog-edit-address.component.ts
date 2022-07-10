@@ -21,7 +21,7 @@ export class DialogEditAddressComponent implements OnInit {
   saveUser() {
     this.loading = true;
     this.firestore
-      .collection('users')
+      .collection('crmusers')
       .doc(this.userId)
       .update(this.user.toJSON())
       .then(() => {

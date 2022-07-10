@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { user } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -20,11 +20,18 @@ export class DialogEditUserComponent implements OnInit, DoCheck {
   loading: boolean = false;
 
   ngOnInit(): void {
-    this.birthDate = new Date (this.user.birthDate);
+    this.birthDate = new Date(this.user.birthDate);
+  }
+
+  async updateVATState(vatNo: string, userId?: string) {
+    await this.vatcheck.vat(vatNo, userId);
+    this.user.vatState = this.vatcheck.vatState;
+    console.log('vat updated');
   }
 
   ngDoCheck() {
-    this.user.vatState = this.vatcheck.vatState;
+    // this.user.vatState = this.vatcheck.vatState;
+    // console.log('docheck');
   }
 
   saveUser() {
@@ -32,7 +39,7 @@ export class DialogEditUserComponent implements OnInit, DoCheck {
     this.user.vatState = this.vatcheck.vatState;
     this.loading = true;
     this.firestore
-      .collection('users')
+      .collection('crmusers')
       .doc(this.userId)
       .update(this.user.toJSON())
       .then(() => {

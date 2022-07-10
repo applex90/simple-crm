@@ -7,7 +7,6 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
   providedIn: 'root'
 })
 export class VatcheckService {
-  user: User;
   vatState: string = '';
 
   constructor(private firestore: AngularFirestore) { }
@@ -28,17 +27,17 @@ export class VatcheckService {
           this.vatState = 'invalid';
         }        
         this.saveVatState(this.vatState, userId, vatNo);
-         
       }
 
     } catch (e) {
       console.log('error occured', e);
+
     }
   }
 
   saveVatState(vatState: string, userId: string, vatNo : string) {
     this.firestore
-      .collection('users')
+      .collection('crmusers')
       .doc(userId)
       .update({vatState: vatState, vat: vatNo})
       .then(() => {

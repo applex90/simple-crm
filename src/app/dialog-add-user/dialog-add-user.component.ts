@@ -28,7 +28,7 @@ export class DialogAddUserComponent implements OnInit {
     this.loading = true;
 
     this.firestore
-      .collection('users')
+      .collection('crmusers')
       .add(this.user.toJSON())
       .then((result: any) => {
         this.loading = false;

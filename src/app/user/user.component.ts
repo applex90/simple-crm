@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.firestore
-    .collection('users')
+    .collection('crmusers')
     .valueChanges({idField: 'customIdName'}) //Get entity of unique document
     .subscribe((changes: any) => {
         console.log('Received changes from DB', changes);
