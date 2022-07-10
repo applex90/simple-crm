@@ -32,6 +32,10 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { MatDividerModule } from '@angular/material/divider';
 
+import { AuthenticationService } from './auth.service';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +45,9 @@ import { MatDividerModule } from '@angular/material/divider';
     DialogAddUserComponent,
     UserDetailComponent,
     DialogEditAddressComponent,
-    DialogEditUserComponent
+    DialogEditUserComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +74,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatMenuModule,
     MatDividerModule
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
