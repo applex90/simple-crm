@@ -41,6 +41,7 @@ export class UserDetailComponent implements OnInit {
     const dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.vatcheck.vatState = this.user.vatState;
   }
 
   editMenu() {

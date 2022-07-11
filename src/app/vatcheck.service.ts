@@ -26,12 +26,12 @@ export class VatcheckService {
           console.log('invalid');
           this.vatState = 'invalid';
         }        
-        this.saveVatState(this.vatState, userId, vatNo);
       }
+      this.saveVatState(this.vatState, userId, vatNo);
 
     } catch (e) {
       console.log('error occured', e);
-
+      this.vatState = 'unable to check';
     }
   }
 

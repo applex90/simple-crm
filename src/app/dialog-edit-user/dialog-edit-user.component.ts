@@ -11,7 +11,7 @@ import { VatcheckService } from '../vatcheck.service';
   templateUrl: './dialog-edit-user.component.html',
   styleUrls: ['./dialog-edit-user.component.scss']
 })
-export class DialogEditUserComponent implements OnInit, DoCheck {
+export class DialogEditUserComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>, private firestore: AngularFirestore, public vatcheck: VatcheckService) { }
   user: User;
@@ -23,16 +23,17 @@ export class DialogEditUserComponent implements OnInit, DoCheck {
     this.birthDate = new Date(this.user.birthDate);
   }
 
-  async updateVATState(vatNo: string, userId?: string) {
-    await this.vatcheck.vat(vatNo, userId);
-    this.user.vatState = this.vatcheck.vatState;
-    console.log('vat updated');
-  }
-
-  ngDoCheck() {
-    // this.user.vatState = this.vatcheck.vatState;
-    // console.log('docheck');
-  }
+  // async updateVATState(vatNo: string, userId?: string) {
+  //   this.vatcheck.checkDone = false;
+  //   console.log('start update ', this.vatcheck.checkDone);
+  //   await this.vatcheck.vat(vatNo, userId);
+  //   if (this.vatcheck.checkDone == true) {
+  //     this.user.vatState = this.vatcheck.vatState;
+  //     console.log('vatcheck done');
+  //   }
+  //   this.vatcheck.checkDone = false;
+  //   console.log('end ', this.vatcheck.checkDone);
+  // }
 
   saveUser() {
     this.user.birthDate = this.birthDate.getTime();
