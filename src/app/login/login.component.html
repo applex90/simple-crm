@@ -1,0 +1,14 @@
+
+<h1>LOGIN</h1>
+
+<div *ngIf="fs.auth.user | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }} {{ user.email }}!</h1>
+    <button (click)="fs.logout()">Logout</button>
+</div>
+
+<ng-template #showLogin>
+    <p>Please login.</p>
+    <button (click)="fs.loginGoogle()">Login with Google</button>
+    <button (click)="fs.loginMail('alex20bachmann@gmx.de', 'messe1234')">Login with Email/Password</button>
+    <button (click)="fs.loginGuest()">Login with Guest</button>
+</ng-template>
