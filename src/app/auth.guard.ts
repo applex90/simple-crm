@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     _next: ActivatedRouteSnapshot,
     _state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  ): boolean {
 
     if (this.fs.isLoggedIn !== true) {
       alert('Access Denied, Login is required to Access This Page!');
