@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { limitToFirst } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 
@@ -30,27 +31,56 @@ export class FireauthService {
   }
 
 
-    // GoogleSingIn
-    loginGoogle() {
-      this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-      this.router.navigate(['/dashboard']);
+  // GoogleSingIn
+  async loginGoogle() {
+    try {
+      let resp = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      if (resp.user) {
+        this.userData = resp.user;
+        console.log(resp.user);
+        this.router.navigate(['/dashboard']);
+      }
     }
-  
-    // Sign in with mail and password
-    async loginMail(email, password) {
-      let currentUser = await this.auth.signInWithEmailAndPassword(email, password);
-      let user = currentUser.user;
-      this.router.navigate(['/dashboard']);
+    catch (error) {
+      console.log('Error occured:', error);
+      this.router.navigate(['/login']);
     }
-  
-    // Sign in as Guest
-    async loginGuest() {
-      let currentUser = await this.auth.signInAnonymously();
-      let result = await currentUser.user.updateProfile({
+  }
+
+  // Sign in with mail and password
+  async loginMail(email, password) {
+    try {
+      let resp = await this.auth.signInWithEmailAndPassword(email, password);
+      if (resp.user) {
+        console.log(resp.user);
+        this.userData = resp.user;
+        this.router.navigate(['/dashboard']);
+      }
+    }
+    catch (error) {
+      console.log('Error occured:', error);
+      this.router.navigate(['/login']);
+    }
+  }
+
+  // Sign in as Guest
+  async loginGuest() {
+    try {
+      let resp = await this.auth.signInAnonymously();
+      await resp.user.updateProfile({
         displayName: 'Guest' //update name to Guest
       });
-      this.router.navigate(['/dashboard']);
+      if(resp.user) {
+          this.userData = resp.user;
+          console.log(resp.user);
+          this.router.navigate(['/dashboard']);
+        }
+      }
+    catch (error) {
+      console.log('Error occured:', error);
+      this.router.navigate(['/login']);
     }
+  }
 
   //Logout
   logout() {
