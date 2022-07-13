@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
     if (this.fs.isLoggedIn !== true) {
       alert('Access Denied, Login is required to Access This Page!');
       this.router.navigate(['/login']);
+
     }
     return true;
   }

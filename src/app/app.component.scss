@@ -57,3 +57,20 @@ mat-toolbar-row {
     padding-right: 56px;
     padding-top: 16px;
 }
+
+.loginInfo {
+    position: absolute;
+    right: 0;
+    text-align: right;
+    padding: 16px;
+    
+    .user-info-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logout-btn {
+        margin-left: 16px;
+    }
+}

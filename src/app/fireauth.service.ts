@@ -30,24 +30,27 @@ export class FireauthService {
   }
 
 
-  // GoogleSingIn
-  loginGoogle() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
-
-  // Sign in with mail and password
-  async loginMail(email, password) {
-    let currentUser = await this.auth.signInWithEmailAndPassword(email, password);
-    let user = currentUser.user;
-  }
-
-  // Sign in as Guest
-  async loginGuest() {
-    let currentUser = await this.auth.signInAnonymously();
-    let result = await currentUser.user.updateProfile({
-      displayName: 'Guest' //update name to Guest
-    })
-  }
+    // GoogleSingIn
+    loginGoogle() {
+      this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      this.router.navigate(['/dashboard']);
+    }
+  
+    // Sign in with mail and password
+    async loginMail(email, password) {
+      let currentUser = await this.auth.signInWithEmailAndPassword(email, password);
+      let user = currentUser.user;
+      this.router.navigate(['/dashboard']);
+    }
+  
+    // Sign in as Guest
+    async loginGuest() {
+      let currentUser = await this.auth.signInAnonymously();
+      let result = await currentUser.user.updateProfile({
+        displayName: 'Guest' //update name to Guest
+      });
+      this.router.navigate(['/dashboard']);
+    }
 
   //Logout
   logout() {
