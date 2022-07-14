@@ -24,7 +24,7 @@
         <div class="loginInfo">
           <div *ngIf="fs.auth.user | async as user" class="user-info-box">
             <div>Hello {{ user.displayName }} {{ user.email }}!</div>
-            <button (click)="fs.logout()" class="logout-btn">Logout</button>
+            <button mat-raised-button (click)="fs.logout()" class="logout-btn">Logout</button>
           </div>
         </div>
 

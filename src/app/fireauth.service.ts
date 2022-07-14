@@ -14,21 +14,11 @@ export class FireauthService {
     this.auth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
       } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user'));
+        this.userData = null;
       }
     });
   }
-
-  // Returns true when user is logged in and email is verified
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null ? true : false;
-  }
-
 
   // GoogleSingIn
   async loginGoogle() {
@@ -36,29 +26,25 @@ export class FireauthService {
       let resp = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
       if (resp.user) {
         this.userData = resp.user;
-        console.log(resp.user);
         this.router.navigate(['/dashboard']);
       }
     }
     catch (error) {
       console.log('Error occured:', error);
-      this.router.navigate(['/login']);
     }
   }
 
   // Sign in with mail and password
-  async loginMail(email, password) {
+  async loginMail(email, password) {    
     try {
       let resp = await this.auth.signInWithEmailAndPassword(email, password);
       if (resp.user) {
-        console.log(resp.user);
         this.userData = resp.user;
         this.router.navigate(['/dashboard']);
       }
     }
     catch (error) {
       console.log('Error occured:', error);
-      this.router.navigate(['/login']);
     }
   }
 
@@ -70,20 +56,18 @@ export class FireauthService {
         displayName: 'Guest' //update name to Guest
       });
       if(resp.user) {
-          this.userData = resp.user;
-          console.log(resp.user);
-          this.router.navigate(['/dashboard']);
+        this.userData = resp.user;
+        this.router.navigate(['/dashboard']);
         }
       }
     catch (error) {
       console.log('Error occured:', error);
-      this.router.navigate(['/login']);
     }
   }
 
   //Logout
   logout() {
     this.auth.signOut();
-    this.router.navigate(['']);
+    this.router.navigate(['/login']);
   }
 }

@@ -7,12 +7,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-right: 16px;
 }
 
+.mb-23 {
+    margin-bottom: 23px;
+}
+
 .mt-23 {
     margin-top: 32px;
 }
 
 .full-width {
     width: 100%;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .dialog-container {
@@ -25,4 +33,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         top: -24px;
         width: calc(100% + 48px);
     }
+}
+
+.access-denied {
+    background-color: red;
+    color: white;
+    white-space: pre-wrap;
 }
