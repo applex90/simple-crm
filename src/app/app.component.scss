@@ -20,9 +20,13 @@ mat-toolbar-row {
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     padding-left: 16px;
     padding-right: 16px;
-    min-height: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
+
+    img {
+        height: 56px;
+    }
 }
 
 .menu-items {
