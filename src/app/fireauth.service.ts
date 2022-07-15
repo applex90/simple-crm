@@ -12,10 +12,9 @@ export class FireauthService {
 
     // Setting logged in user in localstorage else null
     this.auth.authState.subscribe((user) => {
-      if (user) {
-        this.userData = user;
-      } else {
-        this.userData = null;
+      this.userData = user;
+      if (!user) {
+        this.router.navigate([{ outlets: { 'login-area': ['login'] }}]);
       }
     });
   }
@@ -35,7 +34,7 @@ export class FireauthService {
   }
 
   // Sign in with mail and password
-  async loginMail(email, password) {    
+  async loginMail(email, password) {
     try {
       let resp = await this.auth.signInWithEmailAndPassword(email, password);
       if (resp.user) {
@@ -55,11 +54,11 @@ export class FireauthService {
       await resp.user.updateProfile({
         displayName: 'Guest' //update name to Guest
       });
-      if(resp.user) {
+      if (resp.user) {
         this.userData = resp.user;
         this.router.navigate(['/dashboard']);
-        }
       }
+    }
     catch (error) {
       console.log('Error occured:', error);
     }
@@ -68,6 +67,5 @@ export class FireauthService {
   //Logout
   logout() {
     this.auth.signOut();
-    this.router.navigate(['/login']);
   }
 }

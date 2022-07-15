@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
 
     if (!this.fs.userData) {
       this.openSnackBar();
-      this.router.navigate(['/login']);
       return false;
     }
     return true;

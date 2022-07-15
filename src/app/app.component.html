@@ -1,7 +1,6 @@
-<!-- <router-outlet name="login-area"></router-outlet> -->
+<router-outlet *ngIf="!(fs.auth.user | async) as user" name="login-area"></router-outlet>
 
-
-<mat-drawer-container class="mat-drawer-container" autosize>
+<mat-drawer-container *ngIf="fs.auth.user | async as user" class="mat-drawer-container" autosize>
   <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
     <div class="logo-container">
       <img src="./assets/img/logo_crm.png" alt="LOGO">

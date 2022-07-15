@@ -16,9 +16,8 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // outlet: 'login-area'
+    outlet: 'login-area'
   },
-
 
   {
     path: 'dashboard',
