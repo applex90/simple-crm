@@ -23,18 +23,6 @@ export class DialogEditUserComponent implements OnInit {
     this.birthDate = new Date(this.user.birthDate);
   }
 
-  // async updateVATState(vatNo: string, userId?: string) {
-  //   this.vatcheck.checkDone = false;
-  //   console.log('start update ', this.vatcheck.checkDone);
-  //   await this.vatcheck.vat(vatNo, userId);
-  //   if (this.vatcheck.checkDone == true) {
-  //     this.user.vatState = this.vatcheck.vatState;
-  //     console.log('vatcheck done');
-  //   }
-  //   this.vatcheck.checkDone = false;
-  //   console.log('end ', this.vatcheck.checkDone);
-  // }
-
   saveUser() {
     this.user.birthDate = this.birthDate.getTime();
     this.user.vatState = this.vatcheck.vatState;

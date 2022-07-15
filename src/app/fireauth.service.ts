@@ -14,7 +14,7 @@ export class FireauthService {
     this.auth.authState.subscribe((user) => {
       this.userData = user;
       if (!user) {
-        this.router.navigate([{ outlets: { 'login-area': ['login'] }}]);
+        this.router.navigate([{ outlets: { 'login-area': ['login'] }}], { skipLocationChange: true });
       }
     });
   }
@@ -25,7 +25,7 @@ export class FireauthService {
       let resp = await this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
       if (resp.user) {
         this.userData = resp.user;
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard'], { skipLocationChange: true });
       }
     }
     catch (error) {
@@ -39,7 +39,7 @@ export class FireauthService {
       let resp = await this.auth.signInWithEmailAndPassword(email, password);
       if (resp.user) {
         this.userData = resp.user;
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard'], { skipLocationChange: true });
       }
     }
     catch (error) {
@@ -56,7 +56,7 @@ export class FireauthService {
       });
       if (resp.user) {
         this.userData = resp.user;
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard'], { skipLocationChange: true });
       }
     }
     catch (error) {
@@ -67,5 +67,6 @@ export class FireauthService {
   //Logout
   logout() {
     this.auth.signOut();
+    this.router.navigate([{ outlets: { 'login-area': ['login'] }}], { skipLocationChange: true });
   }
 }

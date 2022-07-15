@@ -7,10 +7,10 @@
     </div>
 
     <ul class="menu-items">
-      <li routerLink="dashboard">
+      <li routerLink="dashboard" [skipLocationChange]='true'>
         <mat-icon>fact_check</mat-icon>Dashboard
       </li>
-      <li routerLink="user">
+      <li routerLink="user" [skipLocationChange]='true'>
         <mat-icon>perm_identity</mat-icon>User
       </li>
     </ul>
