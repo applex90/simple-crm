@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FireauthService {
   userData: any;
-  constructor(public auth: AngularFireAuth, public router: Router) {
+  constructor(public auth: AngularFireAuth, public router: Router,  private _errorBar: MatSnackBar) {
 
     // Setting logged in user in localstorage else null
     this.auth.authState.subscribe((user) => {
@@ -16,6 +17,16 @@ export class FireauthService {
       if (!user) {
         this.router.navigate([{ outlets: { 'login-area': ['login'] }}], { skipLocationChange: true });
       }
+    });
+  }
+ 
+  openErrorBar(err) {
+    this._errorBar.open(err, '', {
+      duration: 3000,
+      // here specify the position
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+      panelClass: ['access-denied']
     });
   }
 
@@ -29,7 +40,7 @@ export class FireauthService {
       }
     }
     catch (error) {
-      console.log('Error occured:', error);
+      this.openErrorBar(error);
     }
   }
 
@@ -43,7 +54,7 @@ export class FireauthService {
       }
     }
     catch (error) {
-      console.log('Error occured:', error);
+      this.openErrorBar(error);
     }
   }
 
@@ -60,7 +71,7 @@ export class FireauthService {
       }
     }
     catch (error) {
-      console.log('Error occured:', error);
+      this.openErrorBar(error);
     }
   }
 
