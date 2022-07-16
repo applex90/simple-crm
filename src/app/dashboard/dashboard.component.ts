@@ -20,11 +20,14 @@ export class DashboardComponent implements OnInit {
       .subscribe((changes: any) => {
         console.log('Received changes from DB', changes);
         changes.forEach(element => {
-          const index = this.locationData.findIndex((item) => {
-            return item.name === element.city;
-          });
-          //Check for doublets
-          this.checkDoublet(index, element.city);
+          if (element.city) {
+            const index = this.locationData.findIndex((item) => {
+              return item.name === element.city;
+            });
+            //Check for doublets
+            this.checkDoublet(index, element.city);
+            console.log(element.city);
+          }
         });
         this.locationDataGrouped = this.locationData;
       });
