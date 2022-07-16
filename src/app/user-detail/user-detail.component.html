@@ -30,3 +30,30 @@
         {{ user.zipCode }} {{ user.city }}
     </mat-card-content>
 </mat-card>
+<br>
+<mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Actions done</mat-label>
+    <mat-chip-list #chipList>
+      <mat-chip
+        *ngFor="let action of actions"
+        (removed)="remove(action)">
+        {{action}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="New action..."
+        #actionInput
+        [formControl]="actionCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let action of filteredActions | async" [value]="action">
+        {{action}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>

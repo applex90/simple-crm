@@ -1,6 +1,7 @@
 export class User {
     vat: string;
     vatState: string;
+    actions: Array<string>;
     companyName: string;
     firstName: string;
     lastName: string;
@@ -13,6 +14,7 @@ export class User {
     constructor(obj?: any) {
         this.vat = obj ? obj.vat : '';
         this.vatState = obj ? obj.vatState : '';
+        this.actions = obj ? obj.actions : [];
         this.companyName = obj ? obj.companyName : '';
         this.firstName = obj ? obj.firstName : '';
         this.lastName = obj ? obj.lastName : '';
@@ -27,6 +29,7 @@ export class User {
         return {
             vat: this.vat,
             vatState: this.vatState,
+            actions: this.actions,
             companyName: this.companyName,
             firstName: this.firstName,
             lastName: this.lastName,

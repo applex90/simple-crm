@@ -34,6 +34,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { LoginComponent } from './login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgxChartsModule }from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -51,8 +54,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     MatSidenavModule,
+    MatTooltipModule,
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
@@ -72,7 +75,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     MatDividerModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
