@@ -14,16 +14,24 @@ export class UserComponent implements OnInit {
   allUsers = [];
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore) { }
-  
+
 
   ngOnInit(): void {
     this.firestore
-    .collection('crmusers')
-    .valueChanges({idField: 'customIdName'}) //Get entity of unique document
-    .subscribe((changes: any) => {
+      .collection('crmusers')
+      .valueChanges({ idField: 'customIdName' }) //Get entity of unique document
+      .subscribe((changes: any) => {
         console.log('Received changes from DB', changes);
         this.allUsers = changes;
-    });
+      });
+  }
+
+  deleteUser(userId, event) {
+    event.stopPropagation();
+    this.firestore
+      .collection('crmusers')
+      .doc(userId)
+      .delete();
   }
 
   openDialog() {

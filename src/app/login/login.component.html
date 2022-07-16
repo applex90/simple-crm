@@ -1,4 +1,5 @@
 <mat-card class="login-card">
+    <img src="./assets/img/logo_crm.png" alt="LOGO">
     <div class="login-mail-container">
         <mat-card-title>Login</mat-card-title>
         <form [formGroup]="loginForm" (ngSubmit)="fs.loginMail(this.loginForm.value.email, loginForm.value.pwd)">

@@ -17,8 +17,6 @@ export class DialogAddUserComponent implements OnInit {
 
   constructor(private firestore: AngularFirestore, public dialogRef: MatDialogRef<DialogAddUserComponent>, public vatcheck: VatcheckService) { }
  
-  
-
   ngOnInit(): void {
   }
 

@@ -9,6 +9,7 @@
       <td>{{ user.firstName }} {{ user.lastName }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.city }}</td>
+      <td><span><mat-icon (click)="deleteUser(user.customIdName, $event)">delete</mat-icon></span></td>
     </tr>
 
 
