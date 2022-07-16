@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FireauthService } from '../fireauth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FireauthService } from '../services/fireauth.service';
 
 @Component({
   selector: 'app-login',

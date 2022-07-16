@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { FireauthService } from './fireauth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FireauthService } from './services/fireauth.service';
+
 
 @Injectable({
   providedIn: 'root'

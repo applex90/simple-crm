@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { VatcheckService } from '../vatcheck.service';
+import { VatcheckService } from '../services/vatcheck.service';
 
 @Component({
   selector: 'app-dialog-add-user',

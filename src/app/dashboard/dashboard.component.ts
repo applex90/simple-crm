@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FireauthService } from '../fireauth.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -4,7 +4,7 @@ import { user } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
-import { VatcheckService } from '../vatcheck.service';
+import { VatcheckService } from '../services/vatcheck.service';
 
 @Component({
   selector: 'app-dialog-edit-user',

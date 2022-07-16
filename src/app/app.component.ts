@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FireauthService } from './fireauth.service';
-
+import { FireauthService } from './services/fireauth.service';
 
 
 @Component({

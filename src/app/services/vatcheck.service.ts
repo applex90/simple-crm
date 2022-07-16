@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from 'src/models/user.class';
-import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 
 @Injectable({
   providedIn: 'root'
