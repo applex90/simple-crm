@@ -78,6 +78,7 @@ import { NgxChartsModule }from '@swimlane/ngx-charts';
     ReactiveFormsModule,
     MatChipsModule,
     MatAutocompleteModule,
+    MatToolbarModule,
     NgxChartsModule
   ],
   providers: [],
